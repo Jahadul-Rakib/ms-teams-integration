@@ -26,9 +26,9 @@ public class TeamApiIntegration {
     }
 
     private static IAuthenticationResult getAccessTokenByClientCredentialGrant() throws Exception {
-        String authorityTenant = "https://login.microsoftonline.com/f8cdef31-a31e-4b4a-93e4-5f571e91255a/";
-        String clientId = "088d9b3a-98dd-421c-952e-8885fc86b192";
-        String clientSecret = "cgW7Q~zG~G.NnBgYcBqlGk-QYwc.3kAZGbh_q";
+        String authorityTenant = "https://login.microsoftonline.com/{tenant-id}/";
+        String clientId = "";
+        String clientSecret = "";
 
         ConfidentialClientApplication app = ConfidentialClientApplication
                 .builder(clientId, ClientCredentialFactory.createFromSecret(clientSecret))
@@ -42,8 +42,8 @@ public class TeamApiIntegration {
     }
 
     private static void sendMessageToGroup(String accessToken, String data) throws IOException {
-        String teamId = "4a0d535c-9648-44f4-aed5-c329e896676d";
-        String channelId = "19%253af17a64cab3d24b92983314e7e2a7870f%2540thread.tacv2";
+        String teamId = "";
+        String channelId = "";
         URL url = new URL("https://graph.microsoft.com/v1.0/teams/" + teamId + "/channels/" + channelId + "/messages");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("POST");

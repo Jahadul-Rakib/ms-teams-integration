@@ -15,10 +15,10 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
 
-public class TeamsHook {
+public class TeamsWebHookIntegration {
 
     private static final String url = "{connection-url}";
-    private static final Logger LOG = LoggerFactory.getLogger(TeamsHook.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TeamsWebHookIntegration.class);
 
     public static void createWebHook(String title, String message) {
         List<Sections> sectionsList = new ArrayList<>();
@@ -44,6 +44,8 @@ public class TeamsHook {
         ResponseEntity<String> response = restTemplate.postForEntity(url, entity, String.class);
         LOG.info("SendWebHook summary = {}, response = {}", summary, response.getStatusCode());
     }
+
+
 }
 
 @Data
@@ -64,3 +66,4 @@ class Facts {
     private String name;
     private String value;
 }
+
